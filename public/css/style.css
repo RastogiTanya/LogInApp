@@ -1,0 +1,21 @@
+
+.main{
+    background-color: black;
+    width: 100%;
+}
+.main a{
+    text-decoration: none;
+    color: rgb(199, 245, 230);
+}
+.main a:hover{
+    color: aquamarine;
+}
+.formclass{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    justify-content: center;
+    align-items: center;
+
+}

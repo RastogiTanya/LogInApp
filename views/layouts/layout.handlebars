@@ -11,15 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
-    <title>Document</title>
+    <title>LoginApp</title>
 </head>
 <body>
    <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg main">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">LOGIN-SYSTEM</a>
+      <a class="navbar-brand" href="/">LOGIN-SYSTEM</a>
   
       <!-- Toggle button -->
       <button
@@ -39,16 +39,16 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+            <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users/Login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="/users/logout">Logout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href="/users/register">Register</a>
           </li>
         </ul>
       </div>
@@ -58,6 +58,12 @@
   </nav>
   <!-- Navbar -->
    <!-- MDB -->
+<div class="row">
+  <div class="cont">
+    {{{body}}}
+  </div>
+</div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script> 
 </body>
 </html>
