@@ -42,21 +42,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(expressValidator({
-//     errorFormatter: function(param,msg,value){
-//         var namespace =param.split('.');
-//         var root = namespace.shift();
-//         var formParam=root;
-//         while(namespace.length){
-//             formParam+= '[' + namepsace.shift() +']';
-//         }
-//         return{
-//             param: formParam,
-//             msg : msg,
-//             value: value
-//         };
-//     }
-// }));
+app.use(expressValidator({
+    errorFormatter: function(param,msg,value){
+        var namespace =param.split('.');
+        var root = namespace.shift();
+        var formParam=root;
+        while(namespace.length){
+            formParam+= '[' + namepsace.shift() +']';
+        }
+        return{
+            param: formParam,
+            msg : msg,
+            value: value
+        };
+    }
+}));
 //connecting flash
 app.use(flash());
 
