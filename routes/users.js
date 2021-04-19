@@ -1,4 +1,6 @@
 var express = require('express');
+const passport= require('passport');
+const LocalStrategy= require('passport-local').Strategy;  
 var router = express.Router();
 var User = require('../models/user')
 //Register
@@ -50,4 +52,47 @@ router.post('/register', function(req, res) {
       }
 });
 
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.getUserByUsername(username,function(err,user){
+      if(err) throw err;
+      if(!user){
+        return done(null,false,{message:'Unknown User'});
+      }
+      User.comparePassword(password,user.password,function(error,isMatch){
+        if (error) throw error;
+        if(isMatch)
+        {
+          return done(null,user);
+        }
+        else{
+          return done(null,false,{message:'Invalid password'});
+        }
+      });
+    });
+  }));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.getUserById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+//from passport documentation , for authentication 
+router.post('/login',
+  passport.authenticate('local',{successRedirect:'/',failureRedirect:'/users/login',failureFlash: true}),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+router.get('/logout',function(req,res){
+  req.logout();
+  req.flash('success_msg',"You are logged out");
+  res.redirect('/users/login');
+})
 module.exports = router;
