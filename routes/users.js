@@ -13,6 +13,10 @@ router.get('/login', function(req, res) {
     res.render('login');
 });
 
+router.get('/homepage', function(req, res) {
+  res.render('homepage');
+});
+
 router.post('/register', function(req, res) {
      var name= req.body.name;
       let email= req.body.email;
